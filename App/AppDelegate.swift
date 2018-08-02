@@ -42,8 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let nc = UINavigationController(rootViewController: self.charactersVC)
         self.window!.rootViewController = nc
 
+        self.animatorController = AnimatorController()
+        nc.delegate = self.animatorController
+
         self.setupItems()
-        self.setupTransition()
         self.setupDetailsDisplay()
     }
 
@@ -69,11 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
     }
 
-    private func setupTransition()
-    {
-        self.animatorController = AnimatorController()
-    }
-
     private func setupDetailsDisplay()
     {
         // Display details upon item selection.
@@ -94,11 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let vc = UIViewControllerTemplate<CharacterView>(mainView: characterView)
         vc.view.backgroundColor = .white
 
-        vc.transitioningDelegate = self.animatorController
-
         // Display them.
-        //self.charactersVC.show(vc, sender: nil)
-        self.charactersVC.present(vc, animated: true)
+        self.charactersVC.show(vc, sender: nil)
     }
 
 }

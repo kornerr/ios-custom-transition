@@ -1,22 +1,24 @@
 
 import UIKit
 
-class AnimatorController: NSObject, UIViewControllerTransitioningDelegate
+class AnimatorController: NSObject, UINavigationControllerDelegate
 {
 
     let transition = Animator()
 
-    func animationController(
-        forPresented presented: UIViewController,
-        presenting: UIViewController,
-        source: UIViewController
+    func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationControllerOperation,
+        from fromVC: UIViewController,
+        to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        return transition
-    }
 
-    func animationController(
-        forDismissed dismissed: UIViewController
-    ) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push
+        {
+            return transition
+        }
+        // TODO Support .pop
+
         return nil
     }
 
