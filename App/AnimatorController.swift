@@ -1,4 +1,7 @@
 
+// Topic: Navigation controller custom transition animation
+// Source: https://stackoverflow.com/a/26569703/3404710
+
 import UIKit
 
 class AnimatorController: NSObject, UINavigationControllerDelegate
