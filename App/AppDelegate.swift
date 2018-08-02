@@ -97,7 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         vc.transitioningDelegate = self.animatorController
 
         // Display them.
-        self.charactersVC.show(vc, sender: nil)
+        //self.charactersVC.show(vc, sender: nil)
+        self.charactersVC.present(vc, animated: true)
     }
 
 }
