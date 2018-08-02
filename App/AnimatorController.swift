@@ -7,7 +7,15 @@ import UIKit
 class AnimatorController: NSObject, UINavigationControllerDelegate
 {
 
-    let transition = Animator()
+    private let transition = Animator()
+
+    var originFrame = CGRect.zero
+    {
+        didSet
+        {
+            self.transition.originFrame = self.originFrame
+        }
+    }
 
     func navigationController(
         _ navigationController: UINavigationController,
@@ -15,14 +23,8 @@ class AnimatorController: NSObject, UINavigationControllerDelegate
         from fromVC: UIViewController,
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-
-        if operation == .push
-        {
-            return transition
-        }
-        // TODO Support .pop
-
-        return nil
+        self.transition.presenting = (operation == .push)
+        return self.transition
     }
 
 }

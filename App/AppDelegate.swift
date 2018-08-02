@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let vc = UIViewControllerTemplate<CharacterView>(mainView: characterView)
         vc.view.backgroundColor = .white
 
+        // Prepare transition.
+        self.animatorController.originFrame = self.charactersView.selectedItemFrame
         // Display them.
         self.charactersVC.show(vc, sender: nil)
     }

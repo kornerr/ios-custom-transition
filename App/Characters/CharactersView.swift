@@ -7,7 +7,7 @@ private func LOG(_ message: String)
 }
 
 private let INSET: CGFloat = 15
-private let ITEM_SIZE = CGSize(width: 130, height: 200)
+private let ITEM_SIZE = CGSize(width: 130, height: 130)
 
 class CharactersView:
     UIView,
@@ -64,7 +64,7 @@ class CharactersView:
     private typealias CellView = CharactersItemView
     private typealias Cell = UICollectionViewCellTemplate<CellView>
 
-    private func cell(forItemAt indexPath: IndexPath) -> UICollectionViewCell
+    private func cell(forItemAt indexPath: IndexPath) -> Cell
     {
         let cell =
             self.collectionView.dequeueReusableCell(
@@ -91,6 +91,7 @@ class CharactersView:
 
     // MARK: - ITEM SELECTION
 
+    var selectedItemFrame = CGRect.zero
     var selectedItemId = -1
     var selectedItemChanged: SimpleCallback?
 
@@ -99,6 +100,10 @@ class CharactersView:
         didSelectItemAt indexPath: IndexPath
     ) {
         self.selectedItemId = indexPath.row
+
+        let cell = self.cell(forItemAt: indexPath)
+        self.selectedItemFrame = self.collectionView.convert(cell.frame, to: nil)
+
         // Report the change.
         if let report = self.selectedItemChanged
         {
