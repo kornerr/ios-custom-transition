@@ -6,4 +6,4 @@ targets:
         type: application
         platform: iOS
         deploymentTarget: "9.0"
-        sources: [App, Components]
+        sources: [App, Components, Images]

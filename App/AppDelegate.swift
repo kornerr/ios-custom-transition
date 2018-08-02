@@ -31,24 +31,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     // MARK: - APPLICATION
 
-    private var mainVC: MainVC!
+    private var charactersView: CharactersView!
 
     private func setupApplication()
     {        
-        let storyboard = UIStoryboard.init(name: "MainVC", bundle: nil)
-        self.mainVC =
-            storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainVC
-
-        let nc = UINavigationController(rootViewController: self.mainVC)
+        self.charactersView = UIView.loadFromNib()
+        let vc = UIViewControllerTemplate<CharactersView>(mainView: self.charactersView)
+        let nc = UINavigationController(rootViewController: vc)
         self.window!.rootViewController = nc
 
-        /*
-        // Setup collapse/expansion once details heights are available.
-        self.mainVC.detailsHeightsAreAvailable = { [weak self] in
-            guard let this = self else { return }
-            this.setupCollapseExpansion()
-        }
-        */
+        self.setupItems()
+    }
+
+    private func setupItems()
+    {
+        // NOTE Images represent MassEffect races: http://masseffect.wikia.com/wiki/Races
+        let races = [
+            "asari",
+            "drell",
+            "elcor",
+            "hanar",
+            "humans",
+            "keepers",
+            "salarians",
+            "turians",
+            "volus"
+        ]
+        self.charactersView.items =
+            races.map {
+                let imageName = "race.\($0).png"
+                let image = UIImage(named: imageName)!
+                return CharactersItem(image)
+            }
     }
 
 }
