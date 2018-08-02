@@ -25,12 +25,14 @@
 		BF_476489403731 /* CharactersItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FR_155433610991 /* CharactersItemView.xib */; };
 		BF_582006775397 /* UIView+NibFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_707426666284 /* UIView+NibFile.swift */; };
 		BF_621219060763 /* race.salarians.png in Resources */ = {isa = PBXBuildFile; fileRef = FR_513695324878 /* race.salarians.png */; };
+		BF_710446951908 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_355498376375 /* Animator.swift */; };
 		BF_723697569970 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FR_432405332842 /* CharacterView.xib */; };
 		BF_759391656223 /* UIView+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_381903666438 /* UIView+Embed.swift */; };
 		BF_760384846734 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_673257801070 /* CharacterView.swift */; };
 		BF_783082259343 /* race.humans.png in Resources */ = {isa = PBXBuildFile; fileRef = FR_203704040164 /* race.humans.png */; };
 		BF_815875374802 /* race.drell.png in Resources */ = {isa = PBXBuildFile; fileRef = FR_353515095822 /* race.drell.png */; };
 		BF_885637928555 /* race.hanar.png in Resources */ = {isa = PBXBuildFile; fileRef = FR_900508290175 /* race.hanar.png */; };
+		BF_890884163694 /* AnimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_470939999991 /* AnimatorController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,10 +45,12 @@
 		FR_321784718439 /* CharactersView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharactersView.xib; sourceTree = "<group>"; };
 		FR_342210845172 /* CharactersItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersItemView.swift; sourceTree = "<group>"; };
 		FR_353515095822 /* race.drell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = race.drell.png; sourceTree = "<group>"; };
+		FR_355498376375 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		FR_381903666438 /* UIView+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Embed.swift"; sourceTree = "<group>"; };
 		FR_432405332842 /* CharacterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
 		FR_437210497976 /* race.elcor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = race.elcor.png; sourceTree = "<group>"; };
 		FR_453004593807 /* CustomTransition.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CustomTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_470939999991 /* AnimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorController.swift; sourceTree = "<group>"; };
 		FR_513695324878 /* race.salarians.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = race.salarians.png; sourceTree = "<group>"; };
 		FR_554528332082 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		FR_585019282326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			children = (
 				G_7250231536342 /* Character */,
 				G_7507124299524 /* Characters */,
+				FR_355498376375 /* Animator.swift */,
+				FR_470939999991 /* AnimatorController.swift */,
 				FR_879971130433 /* AppDelegate.swift */,
 				FR_585019282326 /* Info.plist */,
 				FR_723695850563 /* Localizable.strings */,
@@ -211,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF_710446951908 /* Animator.swift in Sources */,
+				BF_890884163694 /* AnimatorController.swift in Sources */,
 				BF_395414167053 /* AppDelegate.swift in Sources */,
 				BF_760384846734 /* CharacterView.swift in Sources */,
 				BF_469752814082 /* CharactersItem.swift in Sources */,
