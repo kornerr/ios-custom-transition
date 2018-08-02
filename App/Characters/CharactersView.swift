@@ -11,7 +11,8 @@ private let ITEM_SIZE = CGSize(width: 130, height: 200)
 
 class CharactersView:
     UIView,
-    UICollectionViewDataSource
+    UICollectionViewDataSource,
+    UICollectionViewDelegate
 {
 
     // MARK: - SETUP
@@ -21,16 +22,6 @@ class CharactersView:
         super.awakeFromNib()
         self.setupCollectionView()
     }
-
-    // MARK: - ITEMS
-
-    var items = [CharactersItem]()
-    {
-        didSet
-        {
-            self.collectionView.reloadData()
-        }
-    }
     
     // MARK: - COLLECTION VIEW
 
@@ -38,18 +29,19 @@ class CharactersView:
 
     private func setupCollectionView()
     {
+        self.collectionView.register(
+            Cell.self,
+            forCellWithReuseIdentifier: self.CELL_ID
+        )
+
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = ITEM_SIZE
         layout.sectionInset =
             UIEdgeInsets(top: INSET, left: INSET, bottom: INSET, right: INSET)
         self.collectionView.collectionViewLayout = layout
-
-        self.collectionView.dataSource = self
-
-        self.collectionView.register(
-            Cell.self,
-            forCellWithReuseIdentifier: self.CELL_ID
-        )
     }
     
     func collectionView(
@@ -85,6 +77,33 @@ class CharactersView:
         cell.itemView.image = item.image
 
         return cell
+    }
+
+    // MARK: - ITEMS
+
+    var items = [CharactersItem]()
+    {
+        didSet
+        {
+            self.collectionView.reloadData()
+        }
+    }
+
+    // MARK: - ITEM SELECTION
+
+    var selectedItemId = -1
+    var selectedItemChanged: SimpleCallback?
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        self.selectedItemId = indexPath.row
+        // Report the change.
+        if let report = self.selectedItemChanged
+        {
+            report()
+        }
     }
 
 }

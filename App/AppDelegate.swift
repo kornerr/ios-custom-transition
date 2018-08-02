@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         self.window!.rootViewController = nc
 
         self.setupItems()
+        self.setupDetailsDisplay()
     }
 
     private func setupItems()
@@ -63,6 +64,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 let image = UIImage(named: imageName)!
                 return CharactersItem(image)
             }
+    }
+
+    private func setupDetailsDisplay()
+    {
+        // Subscribe to selection reports.
+        self.charactersView.selectedItemChanged = { [weak self] in
+            guard let this = self else { return }
+            LOG("Selected item: '\(this.charactersView.selectedItemId)'")
+        }
     }
 
 }
