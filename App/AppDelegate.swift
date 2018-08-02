@@ -32,12 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     // MARK: - APPLICATION
 
     private var charactersView: CharactersView!
-
+    private var charactersVC: UIViewController!
+    
     private func setupApplication()
     {        
         self.charactersView = UIView.loadFromNib()
-        let vc = UIViewControllerTemplate<CharactersView>(mainView: self.charactersView)
-        let nc = UINavigationController(rootViewController: vc)
+        self.charactersVC = UIViewControllerTemplate<CharactersView>(mainView: self.charactersView)
+        let nc = UINavigationController(rootViewController: self.charactersVC)
         self.window!.rootViewController = nc
 
         self.setupItems()
@@ -68,11 +69,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     private func setupDetailsDisplay()
     {
-        // Subscribe to selection reports.
+        // Display details upon item selection.
         self.charactersView.selectedItemChanged = { [weak self] in
-            guard let this = self else { return }
-            LOG("Selected item: '\(this.charactersView.selectedItemId)'")
+            self?.displayDetails()
         }
+    }
+
+    private func displayDetails()
+    {
+        // Construct details.
+        let characterView: CharacterView! = UIView.loadFromNib()
+        let itemId = self.charactersView.selectedItemId
+        let item = self.charactersView.items[itemId]
+        characterView.image = item.image
+        
+        // Wrap them in VC.
+        let vc = UIViewControllerTemplate<CharacterView>(mainView: characterView)
+        vc.view.backgroundColor = .white
+
+        // Display them.
+        self.charactersVC.show(vc, sender: nil)
     }
 
 }
