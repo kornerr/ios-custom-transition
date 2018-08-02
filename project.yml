@@ -1,0 +1,9 @@
+name: CustomTransition
+options:
+    bundleIdPrefix: su.kornerr
+targets:
+    CustomTransition:
+        type: application
+        platform: iOS
+        deploymentTarget: "9.0"
+        sources: [App, Components]
