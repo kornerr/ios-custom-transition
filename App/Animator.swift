@@ -4,7 +4,7 @@ import UIKit
 class Animator: NSObject, UIViewControllerAnimatedTransitioning
 {
 
-    let duration = 0.5
+    let duration = 0.3
     var presenting = true
     var originFrame = CGRect.zero
 
@@ -59,14 +59,17 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning
         containerView.addSubview(targetView)
         containerView.bringSubview(toFront: detailsView)
 
+
+        // Reset visibility.
+        detailsView.alpha =
+            self.presenting ?
+            0 :
+            1
+
         UIView.animate(
             withDuration: self.duration,
-            /*
-            delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0,
-            */
             animations: {
+                // Scale.
                 detailsView.transform =
                     self.presenting ?
                     CGAffineTransform.identity :
@@ -74,6 +77,11 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning
                 detailsView.center =
                     CGPoint(x: targetFrame.midX, y: targetFrame.midY)
 
+                // Make (in)visible.
+                detailsView.alpha =
+                    self.presenting ?
+                    1 :
+                    0
             },
             completion: { _ in
                 transitionContext.completeTransition(true)

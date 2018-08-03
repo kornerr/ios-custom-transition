@@ -24,5 +24,6 @@ class CharacterView: UIView
     }
 
     @IBOutlet private var imageView: UIImageView!
+        
 }
 
