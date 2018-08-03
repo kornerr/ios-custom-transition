@@ -38,6 +38,6 @@ This is what the app looks like:
 * Xcode project generation is done with [XcodeGen][xcodegen]
 
 [me-races]: http://masseffect.wikia.com/wiki/Races
-[rayw-transition]: https://www.raywenderlich.com/173576/ios-animation-tutorial-custom-view-controller-presentation-transitions-3
+[rayw]: https://www.raywenderlich.com/173576/ios-animation-tutorial-custom-view-controller-presentation-transitions-3
 [xcodegen]: https://github.com/yonaskolb/XcodeGen
 [preview]: preview.gif
