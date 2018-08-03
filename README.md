@@ -13,7 +13,8 @@ This is what the app looks like:
 
 * `Animator` and `AnimatorController`
     * implement animation during push/pop
-    * scale `CharacterView` from the size of an item in the collection to full screen and changes `CharacterView` alpha
+    * scale `CharacterView` from the size of the selected item of the collection to full screen
+    * change `CharacterView` alpha
 * `AppDelegate`
     * creates `CharactersView` to display collection of races
     * creates `CharacterView` to display concrete race
@@ -27,8 +28,8 @@ This is what the app looks like:
     * is a collection item
     * displays `UIImage` of a race
 * `CharacterView`
-    * display `UIImage` of a race
-    * display race details
+    * displays `UIImage` of a race
+    * displays race details
 
 # References
 
